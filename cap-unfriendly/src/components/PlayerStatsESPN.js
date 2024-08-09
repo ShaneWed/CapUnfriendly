@@ -1,35 +1,33 @@
 import React, { Component } from 'react'
-import PlayerStatsESPN from './PlayerStatsESPN';
 
-class TankTest extends Component {
-
+export class PlayerStatsESPN extends Component {
   constructor(props) {
     super(props)
   
     this.state = {
        items: [],
-       DataisLoaded: false,
+       DataIsLoaded: false,
     }
   }
-
-  componentDidMount() {
-    //const url = 'https://tank01-nhl-live-in-game-real-time-statistics-nhl.p.rapidapi.com/getNHLPlayerInfo?playerName=panarin&getStats=true';
-    const url = 'https://tank01-nhl-live-in-game-real-time-statistics-nhl.p.rapidapi.com/getNHLTeamRoster?teamID=20&getStats=average';
+  
+  componentDidMount(espnID) {
+    console.log('did mount');
+    const url = `https://tank01-nhl-live-in-game-real-time-statistics-nhl.p.rapidapi.com/getNHLPlayerInfo?playerID=${espnID}&getStats=true`;
     const options = {
-	    method: 'GET',
+      method: 'GET',
 	    headers: {
 		    'x-rapidapi-key': '432a9d63a0msh19261010ace7abep1d3688jsn66c034cfb609',
 		    'x-rapidapi-host': 'tank01-nhl-live-in-game-real-time-statistics-nhl.p.rapidapi.com'
 	    }
-    };  
+    };
 
     fetch(url, options)
       .then((res) => res.json())
       .then((json) => {
         this.setState({
           items: json,
-          DataisLoaded: true,
-        });
+          DataIsLoaded: true,
+        });     
       });
   }
 
@@ -38,27 +36,28 @@ class TankTest extends Component {
     if(!DataisLoaded)
       return (
         <div>
-          <h1>Please wait</h1>
+          <h1>Please wait guh</h1>
         </div>
-      );Stats
+      );
 
     return (
-      <div>
+      console.log(items),
+      <React.Fragment>
         {items.body.roster.map((item) => (
           <div>
             <ol key={item.id}>
               <div>
                 <strong>
-                  {"API Stats"}
+                  {"child component"}
                 </strong>
-                <PlayerStatsESPN espnID={item.espnID}/>
+                {item.espnName}
               </div>
             </ol>
           </div>
         ))}
-      </div>
-    );
+      </React.Fragment>
+    )
   }
 }
 
-export default TankTest
+export default PlayerStatsESPN

@@ -1,5 +1,4 @@
 import React from 'react'
-import TankTest from './TankTest'
 
 function ListEntries() {
   const persons = [
@@ -36,7 +35,8 @@ function ListEntries() {
           <td>{person.name}</td>
           <td>{person.position}</td>
           <td>{person.goals}</td>
-          <td><TankTest /></td>
+          {/*console.log(Blackhawks())}
+          {/*<td><TankTest /></td>*/}
         </tr>
       </React.Fragment>
     )

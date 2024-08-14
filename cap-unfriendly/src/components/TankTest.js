@@ -40,7 +40,7 @@ class TankTest extends Component {
         <div>
           <h1>Please wait</h1>
         </div>
-      );Stats
+      );
 
     return (
       <div>

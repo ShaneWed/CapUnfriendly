@@ -8,7 +8,7 @@ function ListEntries() {
         goals: 49,
         position: 'Wing'
     }
-    /*,
+    ,
     {
         id: 31,
         name: 'Shesterkin',
@@ -20,7 +20,7 @@ function ListEntries() {
         name: 'Fox',
         goals: 19,
         position: 'Defense'
-    }*/
+    }
   ]
   
   const personList = persons.map(person => <Person key={person.id} person={person} />)

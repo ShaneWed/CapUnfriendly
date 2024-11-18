@@ -9,7 +9,7 @@ export class PlayerStatsESPN extends Component {
        DataIsLoaded: false,
     }
   }
-  
+
   componentDidMount(espnID) {
     console.log('did mount');
     const url = `https://tank01-nhl-live-in-game-real-time-statistics-nhl.p.rapidapi.com/getNHLPlayerInfo?playerID=${espnID}&getStats=true`;
